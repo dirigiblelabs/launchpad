@@ -1,0 +1,4 @@
+{
+  "extension-point":"/launchpad/home_item",
+  "description":"Home items extension point"
+}
