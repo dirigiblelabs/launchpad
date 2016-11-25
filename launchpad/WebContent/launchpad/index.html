@@ -41,11 +41,11 @@
 			<div class="collapse navbar-collapse" id="navbar-collapse">
 				<ul id="main-menu" class="nav navbar-nav" ng-controller="MenuCtrl">
 					<li ng-class="{dropdown: !!menu.subMenu}" ng-repeat="menuItem in menu">
-						<a ng-hide="menuItem.subMenu" href="{{ menuItem.link }}">{{ menuItem.name }}</a>
+						<a ng-hide="menuItem.subMenu" href="{{ menuItem.link }}" target="{{menuItem.newTab ? '_blank' : '_self'}}">{{ menuItem.name }}</a>
 						<a ng-show="menuItem.subMenu" href="" class="dropdown-toggle" data-toggle="dropdown">{{ menuItem.name }}</a>
 						<ul class="dropdown-menu">
 							<li ng-repeat="subMenu in menuItem.subMenu">
-								<a href="{{ subMenu.link }}">{{ subMenu.name }}</a>
+								<a href="{{ subMenu.link }}" target="{{subMenu.link.newTab ? '_blank' : '_self'}}">{{ subMenu.name }}</a>
 							</li>
 						</ul>
 					</li>
