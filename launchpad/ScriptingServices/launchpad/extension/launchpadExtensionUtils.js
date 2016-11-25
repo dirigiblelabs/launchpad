@@ -1,7 +1,7 @@
 /* globals $ */
 /* eslint-env node, dirigible */
 
-const EXT_POINT_NAME = "/launchpad/extension_point/launchpad";
+const EXT_POINT_NAME = '/launchpad/extension_point/launchpad';
 
 var extensions = require('core/extensions');
 
@@ -61,7 +61,7 @@ function getLaunchpadExtensions() {
 }
 
 function isFunction(f) {
-	return typeof f === "function";
+	return typeof f === 'function';
 }
 
 function createRoute(route) {

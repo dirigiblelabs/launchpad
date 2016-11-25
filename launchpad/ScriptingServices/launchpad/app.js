@@ -11,7 +11,7 @@ processRequest();
 
 function processRequest() {
 	var app = getApp();
-	sendResponse(app, "text/javascript");
+	sendResponse(app, 'text/javascript');
 }
 
 function getApp() {
@@ -24,7 +24,7 @@ function getApp() {
 }
 
 function sendResponse(content, contentType) {
-	var response = require("net/http/response");
+	var response = require('net/http/response');
 
 	response.setContentType(contentType);
 	response.print(content);
