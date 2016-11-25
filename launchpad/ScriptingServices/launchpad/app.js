@@ -1,7 +1,7 @@
 /* globals $ */
 /* eslint-env node, dirigible */
 
-var fileUtils = require("launchpad/utils/fileUtils");
+var repository = require('platform/repository');
 
 processRequest();
 
@@ -11,7 +11,8 @@ function processRequest() {
 }
 
 function getApp() {
-	var app = fileUtils.getContent("/db/dirigible/registry/public/ScriptingServices/launchpad/content.js");
+	var resource = repository.getResource("/db/dirigible/registry/public/ScriptingServices/launchpad/content.js");
+	var app = resource.getTextContent();
 	// app += getConfig();
 	// app += getControllers();
 	return app;
