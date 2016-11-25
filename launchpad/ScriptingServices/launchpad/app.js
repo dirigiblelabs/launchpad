@@ -2,6 +2,8 @@
 /* eslint-env node, dirigible */
 
 var repository = require('platform/repository');
+var generator = require('platform/generator');
+var launchpadExtensions = require('launchpad/extension/launchpadExtensionUtils');
 
 processRequest();
 
@@ -11,31 +13,14 @@ function processRequest() {
 }
 
 function getApp() {
-	var resource = repository.getResource("/db/dirigible/registry/public/ScriptingServices/launchpad/content.js");
+	var resource = repository.getResource("/db/dirigible/registry/public/ScriptingServices/launchpad/template/appTemplate.js");
 	var app = resource.getTextContent();
-	// app += getConfig();
-	// app += getControllers();
+	var parameters = {
+		'routes': launchpadExtensions.getRoutes(),
+		'controllers': launchpadExtensions.getControllers()
+	};
+	app = generator.generate(app, parameters);
 	return app;
-}
-
-function getConfig() {
-	var routesExtensions = require("registry/extensions/routesExtensions.js");
-
-	var config = fileUtils.getContent("/db/dirigible/registry/public/ScriptingServices/registry/templates/app_config_start.js");
-	config += routesExtensions.getRoutes();
-	config += fileUtils.getContent("/db/dirigible/registry/public/ScriptingServices/registry/templates/app_config_end.js");
-	return config;
-}
-
-function getControllers() {
-	var homeItemExtensions = require("registry/extensions/homeItemExtensions.js");
-	var controllerExtensions = require("registry/extensions/controllerExtensions.js");
-	var menuItemExtensions = require("registry/extensions/menuItemExtensions.js");
-
-	var controllers = controllerExtensions.getControllers();
-	controllers += menuItemExtensions.getControllers();
-	controllers += homeItemExtensions.getControllers();
-	return controllers;
 }
 
 function sendResponse(content, contentType) {

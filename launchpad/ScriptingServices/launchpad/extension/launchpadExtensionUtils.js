@@ -32,7 +32,7 @@ exports.getRoutes = function() {
 	var launchpadExtensions = getLaunchpadExtensions();
 	for (var i = 0; i < launchpadExtensions.length; i ++) {
 		if (isFunction(launchpadExtensions[i].getRoute)) {
-			routes += createRoute(launchpadExtensions[i].getRoute());
+			routes += createRoute(launchpadExtensions[i].getRoute()) + '\n';
 		}
 	}
 	return routes;
@@ -43,7 +43,7 @@ exports.getControllers = function() {
 	var launchpadExtensions = getLaunchpadExtensions();
 	for (var i = 0; i < launchpadExtensions.length; i ++) {
 		if (isFunction(launchpadExtensions[i].getController)) {
-			controllers += launchpadExtensions[i].getController();
+			controllers += launchpadExtensions[i].getController() + '\n';
 		}
 	}
 	return controllers;
@@ -66,7 +66,7 @@ function isFunction(f) {
 
 function createRoute(route) {
 	return '.when(\'' + route.location + '\', {'
-		+ 'controller: \'' + route.controller + '\','
+		+ 'controller: \'' + route.controller + '\', '
 		+ 'templateUrl: \'' + route.template + '\''
 		+ '})';
 }

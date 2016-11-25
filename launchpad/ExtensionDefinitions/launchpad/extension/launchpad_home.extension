@@ -1,0 +1,5 @@
+{
+  "extension":"/launchpad/extension/launchpad_home",
+  "extension-point":"/launchpad/extension_point/launchpad",
+  "description":"Home extension for the Launchpad extension point"
+}
