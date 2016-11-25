@@ -45,7 +45,7 @@
 						<a ng-show="menuItem.subMenu" href="" class="dropdown-toggle" data-toggle="dropdown">{{ menuItem.name }}</a>
 						<ul class="dropdown-menu">
 							<li ng-repeat="subMenu in menuItem.subMenu">
-								<a href="{{ subMenu.link }}" target="{{subMenu.link.newTab ? '_blank' : '_self'}}">{{ subMenu.name }}</a>
+								<a href="{{ subMenu.link }}" target="{{subMenu.newTab ? '_blank' : '_self'}}">{{ subMenu.name }}</a>
 							</li>
 						</ul>
 					</li>
