@@ -1,5 +1,5 @@
 {
-  "extension":"/launchpad/extension/launchpad_menu",
+  "extension":"/launchpad/extension/menu",
   "extension-point":"/launchpad/extension_point/launchpad",
   "description":"Menu extension for the Launchpad extension point"
 }

@@ -8,7 +8,7 @@ exports.getRoute = function() {
 	return {
 		'location': '/home',
 		'controller': 'HomeCtrl',
-		'template': 'templates/home/home.html'
+		'template': 'templates/home.html'
 	};
 };
 
