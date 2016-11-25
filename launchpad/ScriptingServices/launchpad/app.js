@@ -5,6 +5,8 @@ var repository = require('platform/repository');
 var generator = require('platform/generator');
 var launchpadExtensions = require('launchpad/extension/launchpadExtensionUtils');
 
+const APP_TEMPLATE_LOCATION = '/db/dirigible/registry/public/ScriptingServices/launchpad/template/appTemplate.js';
+
 processRequest();
 
 function processRequest() {
@@ -13,14 +15,12 @@ function processRequest() {
 }
 
 function getApp() {
-	var resource = repository.getResource("/db/dirigible/registry/public/ScriptingServices/launchpad/template/appTemplate.js");
-	var app = resource.getTextContent();
 	var parameters = {
 		'routes': launchpadExtensions.getRoutes(),
 		'controllers': launchpadExtensions.getControllers()
 	};
-	app = generator.generate(app, parameters);
-	return app;
+	var app = repository.getResource(APP_TEMPLATE_LOCATION).getTextContent();
+	return generator.generate(app, parameters);
 }
 
 function sendResponse(content, contentType) {
